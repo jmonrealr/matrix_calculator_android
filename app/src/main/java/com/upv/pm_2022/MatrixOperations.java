@@ -36,6 +36,86 @@ public class MatrixOperations {
     }
 
     /**
+     * In this approach, we are iterating every diagonal element and
+     * making all the elements down the diagonal as zero using determinant properties
+     * @param mat Matrix
+     * @param n Size of the matrix
+     * @return
+     */
+    int determinantOfMatrix(int mat[][], int n){
+        int num1, num2, det = 1, index, total = 1;
+
+        int[] temp = new int[n + 1];
+
+        for (int i = 0; i < n; i++){
+            index = i;
+
+            while (index < n && mat[index][i] == 0) {
+                index++;
+            }
+
+            // if there is non zero element
+            if (index == n){
+                // the determinant of matrix as zero
+                continue;
+            }
+            if (index != i){
+                // loop for swapping the diagonal element row
+                // and index row
+                for (int j = 0; j < n; j++){
+                    swap(mat, index, j, i, j);
+                }
+                // determinant sign changes when we shift
+                // rows go through determinant properties
+                det = (int)(det * Math.pow(-1, index - i));
+            }
+
+            // storing the values of diagonal row elements
+            for (int j = 0; j < n; j++){
+                temp[j] = mat[i][j];
+            }
+
+            // traversing every row below the diagonal
+            for (int j = i + 1; j < n; j++){
+                num1 = temp[i]; // value of diagonal element
+                num2 = mat[j][i]; // value of next row element
+
+                // traversing every column of row
+                // and multiplying to every row
+                for (int k = 0; k < n; k++){
+                    // multiplying to make the diagonal
+                    // element and next row element equal
+                    mat[j][k] = (num1 * mat[j][k])
+                                - (num2 * temp[k]);
+                }
+                total = total * num1; // Det(kA)=kDet(A);
+            }
+        }
+        // multiplying the diagonal elements to get
+        // determinant
+        for (int i = 0; i < n; i++){
+            det = det * mat[i][i];
+        }
+        return (det / total); // Det(kA)/k=Det(A);
+    }
+
+    /**
+     * Utility function to swap the values of any matrix
+     * @param arr Matrix
+     * @param i1 First row index
+     * @param j1 First column index
+     * @param i2 Second row index
+     * @param j2 Second column index
+     * @return
+     */
+    int[][] swap(int[][] arr, int i1, int j1, int i2, int j2){
+        int temp = arr[i1][j1];
+        arr[i1][j1] = arr[i2][j2];
+        arr[i2][j2] = temp;
+        return arr;
+    }
+
+    /**
      * The following four simple steps are helpful to find the co-factor matrix of the given matrix.
      * - First, find the minor of each element of the matrix by excluding the row and column of
      *   that particular element, and then taking the remaining part of the matrix.

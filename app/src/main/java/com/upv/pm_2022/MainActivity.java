@@ -232,26 +232,26 @@ public class MainActivity extends AppCompatActivity {
         switch (func){
             case "det":
                 if (inputData.contains("A")){
-                    outputData.setText("Result: " + operations.determinant( matA,3));
+                    outputData.setText("Result: " + operations.determinantOfMatrix( matA,3));
                 }
                 if (inputData.contains("B")){
-                    outputData.setText("Result: " + operations.determinant( matB,3));
+                    outputData.setText("Result: " + operations.determinantOfMatrix( matB,3));
                 }
                 break;
             case "trian":
                 if (inputData.contains("A")){
-                    outputData.setText("Result: " + operations.determinant( matA,3));
+                    outputData.setText("Result: " + operations.determinantOfMatrix( matA,3));
                 }
                 if (inputData.contains("B")){
-                    outputData.setText("Result: " + operations.determinant( matB,3));
+                    outputData.setText("Result: " + operations.determinantOfMatrix( matB,3));
                 }
                 break;
            case "rang":
                 if (inputData.contains("A")){
-                    outputData.setText("Result: " + operations.determinant( matA,3));
+                    outputData.setText("Result: " + operations.determinantOfMatrix( matA,3));
                 }
                 if (inputData.contains("B")){
-                    outputData.setText("Result: " + operations.determinant( matB,3));
+                    outputData.setText("Result: " + operations.determinantOfMatrix( matB,3));
                 }
                 break;
            case "inv":
@@ -272,31 +272,29 @@ public class MainActivity extends AppCompatActivity {
                 break;
            case "tran":
                 if (inputData.contains("A")){
-                    outputData.setText("Result: " + operations.determinant( matA,3));
+                    outputData.setText("Result: " + operations.determinantOfMatrix( matA,3));
                 }
                 if (inputData.contains("B")){
-                    outputData.setText("Result: " + operations.determinant( matB,3));
+                    outputData.setText("Result: " + operations.determinantOfMatrix( matB,3));
                 }
                 break;
            case "diag":
                 if (inputData.contains("A")){
-                    outputData.setText("Result: " + operations.determinant( matA,3));
+                    outputData.setText("Result: " + operations.determinantOfMatrix( matA,3));
                 }
                 if (inputData.contains("B")){
-                    outputData.setText("Result: " + operations.determinant( matB,3));
+                    outputData.setText("Result: " + operations.determinantOfMatrix( matB,3));
                 }
                 break;
            case "adj":
                int [][] adj = new int[3][3];
-                if (inputData.contains("A")){
-                    operations.adjoint(matA, adj);
-                    outputData.setText("Result: " + display(adj));
+               if (inputData.contains("A")){
+                    outputData.setText("Result: " + operations.determinantOfMatrix( matA,3));
                 }
                 if (inputData.contains("B")){
-                    operations.adjoint(matB, adj);
-                    outputData.setText("Result: " + display(adj));
+                    outputData.setText("Result: " + operations.determinantOfMatrix( matB,3));
                 }
-                break;
+               break;
             default:
                 return false;
         }
