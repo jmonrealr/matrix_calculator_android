@@ -262,6 +262,13 @@ public class MatrixOperations {
         return result;
     }
 
+    /**
+     * @deprecated not implemented yet
+     *
+     * @param matA Matrix A
+     * @param matB Matrix B
+     * @return
+     */
     public double[][] div(int [][]matA, int [][]matB){
         double[][] result = new double[3][3];
         return result;

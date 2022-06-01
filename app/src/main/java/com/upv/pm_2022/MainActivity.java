@@ -192,6 +192,14 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Sanitize the input of the user to find the expression to be solved
+     * It's divided in two primary functionalities
+     * The first one handle the normal operation using the method: {@link #doOperation(String, String)}
+     * The second one handle the functions of the matrix using the method: {@link #doFunction(String, String)}
+     * It will ignore everything else
+     * @param inputData By the user to be sanitized
+     */
     private void sanitizeInput(String inputData) {
 
         if (!inputData.isEmpty()){
@@ -227,6 +235,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Handle the functions detected in {@link #sanitizeInput(String)}
+     * The function is implemented in a switch case and then the
+     * matrix used is detected
+     * @param func function to be used
+     * @param inputData input of the user
+     * @return true | false if the functions it´s not valid
+     */
     private boolean doFunction(String func, String inputData){
         MatrixOperations operations = new MatrixOperations();
         switch (func){
@@ -301,6 +317,14 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Handle the operator detected in {@link #sanitizeInput(String)}
+     * The operator is implemented in a switch case and then the
+     * order or the matrix is detected.
+     * @param operator  to be used
+     * @param inputData input of the user
+     * @return true | false if the operator it´s not valid
+     */
     private boolean doOperation(String operator, String inputData){
         MatrixOperations operations = new MatrixOperations();
         String[] aux;
