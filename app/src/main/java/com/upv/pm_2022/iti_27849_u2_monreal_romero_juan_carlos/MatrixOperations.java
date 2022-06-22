@@ -1,4 +1,4 @@
-package com.upv.pm_2022;
+package com.upv.pm_2022.iti_27849_u2_monreal_romero_juan_carlos;
 
 /**
  * @author jmonrealr
@@ -254,7 +254,7 @@ public class MatrixOperations {
             for (int j = 0; j < 3; j++) {
                 result[i][j] = 0;
                 for (int k = 0; k < 3; k++) {
-                    result[i][j] += matA[i][k] + matB[k][j];
+                    result[i][j] += matA[i][k] * matB[k][j];
                 }
             }
 

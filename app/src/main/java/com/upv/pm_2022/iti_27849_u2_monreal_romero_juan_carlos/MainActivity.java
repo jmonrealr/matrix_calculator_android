@@ -1,4 +1,4 @@
-package com.upv.pm_2022;
+package com.upv.pm_2022.iti_27849_u2_monreal_romero_juan_carlos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,16 +15,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
-    Button A, B, trian, det, inv, tran, adj, rang, diag, pow_btn,
+    private Button A, B, trian, det, inv, tran, adj, rang, diag, pow_btn,
             seven, eight, nine, four, five, six, one, two, three,
             plus, minus, asterisk, solve;
-    EditText inputData;
-    TextView outputData;
-    EditText A_0_0, A_0_1, A_0_2, A_1_0, A_1_1, A_1_2, A_2_0, A_2_1, A_2_2;
-    EditText B_0_0, B_0_1, B_0_2, B_1_0, B_1_1, B_1_2, B_2_0, B_2_1, B_2_2;
-    ArrayList<EditText> matAList, matBList;
-    int[][] matA = new int[3][3];
-    int[][] matB = new int[3][3];
+    private EditText inputData;
+    private TextView outputData;
+    private EditText A_0_0, A_0_1, A_0_2, A_1_0, A_1_1, A_1_2, A_2_0, A_2_1, A_2_2;
+    private EditText B_0_0, B_0_1, B_0_2, B_1_0, B_1_1, B_1_2, B_2_0, B_2_1, B_2_2;
+    private ArrayList<EditText> matAList, matBList;
+    private int[][] matA = new int[3][3];
+    private int[][] matB = new int[3][3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

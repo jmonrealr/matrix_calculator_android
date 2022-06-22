@@ -1,4 +1,4 @@
-package com.upv.pm_2022;
+package com.upv.pm_2022.iti_27849_u2_monreal_romero_juan_carlos;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.upv.pm_2022", appContext.getPackageName());
+        assertEquals("com.upv.pm_2022.iti_27849_u2_monreal_romero_juan_carlos", appContext.getPackageName());
     }
 }
