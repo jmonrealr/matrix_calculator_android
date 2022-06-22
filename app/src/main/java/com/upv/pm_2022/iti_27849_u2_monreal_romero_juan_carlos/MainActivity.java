@@ -1,13 +1,15 @@
 package com.upv.pm_2022.iti_27849_u2_monreal_romero_juan_carlos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,138 +28,162 @@ public class MainActivity extends AppCompatActivity {
     private int[][] matA = new int[3][3];
     private int[][] matB = new int[3][3];
 
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        viewPager = findViewById(R.id.simpleViewpager);
+        tabLayout = findViewById(R.id.tabLayout);
+
+        TabLayout.Tab firstTab = tabLayout.newTab();
+        firstTab.setText("Calculator");
+        firstTab.setIcon(R.drawable.ic_launcher);
+
+        TabLayout.Tab secondTab = tabLayout.newTab();
+        secondTab.setText("Graphic Inverse Matrix");
+        secondTab.setIcon(R.drawable.ic_launcher);
+
+
+        tabLayout.addTab(firstTab);
+        tabLayout.addTab(secondTab);
+
+        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+
+
         // Buttons
-        solve = (Button) findViewById(R.id.solve);
-        A = (Button) findViewById(R.id.A);
-        B = (Button) findViewById(R.id.B);
-        trian = (Button) findViewById(R.id.trian);
-        det = (Button) findViewById(R.id.det);
-        inv = (Button) findViewById(R.id.inv);
-        tran = (Button) findViewById(R.id.tran);
-        adj = (Button) findViewById(R.id.adj);
-        rang = (Button) findViewById(R.id.rang);
-        diag = (Button) findViewById(R.id.diag);
-        pow_btn = (Button) findViewById(R.id.pow_btn);
-        seven = (Button) findViewById(R.id.seven);
-        eight = (Button) findViewById(R.id.eight);
-        nine = (Button) findViewById(R.id.nine);
-        four = (Button) findViewById(R.id.four);
-        five = (Button) findViewById(R.id.five);
-        six = (Button) findViewById(R.id.six);
-        one = (Button) findViewById(R.id.one);
-        two = (Button) findViewById(R.id.two);
-        three = (Button) findViewById(R.id.three);
-        plus = (Button) findViewById(R.id.plus);
-        minus = (Button) findViewById(R.id.minus);
-        asterisk = (Button) findViewById(R.id.asterisk);
-
-        inputData = (EditText) findViewById(R.id.inputData);
-        outputData = (TextView) findViewById(R.id.outputData);
-        matAList = new ArrayList<>();
-        matAList.add((EditText) findViewById(R.id.A_0_0));
-        matAList.add((EditText) findViewById(R.id.A_0_1));
-        matAList.add((EditText) findViewById(R.id.A_0_2));
-        matAList.add((EditText) findViewById(R.id.A_1_0));
-        matAList.add((EditText) findViewById(R.id.A_1_1));
-        matAList.add((EditText) findViewById(R.id.A_1_2));
-        matAList.add((EditText) findViewById(R.id.A_2_0));
-        matAList.add((EditText) findViewById(R.id.A_2_1));
-        matAList.add((EditText) findViewById(R.id.A_2_2));
-        matBList = new ArrayList<>();
-        matBList.add((EditText) findViewById(R.id.B_0_0));
-        matBList.add((EditText) findViewById(R.id.B_0_1));
-        matBList.add((EditText) findViewById(R.id.B_0_2));
-        matBList.add((EditText) findViewById(R.id.B_1_0));
-        matBList.add((EditText) findViewById(R.id.B_1_1));
-        matBList.add((EditText) findViewById(R.id.B_1_2));
-        matBList.add((EditText) findViewById(R.id.B_2_0));
-        matBList.add((EditText) findViewById(R.id.B_2_1));
-        matBList.add((EditText) findViewById(R.id.B_2_2));
-
-        A.setOnClickListener(view -> {
-            inputData.append("A");
-        });
-        B.setOnClickListener(view -> {
-            inputData.append("B");
-        });
-        A.setOnClickListener(view -> {
-            inputData.append("A");
-        });
-        trian.setOnClickListener(view -> {
-            inputData.append("trian()");
-        });
-        det.setOnClickListener(view -> {
-            inputData.append("det()");
-        });
-        inv.setOnClickListener(view -> {
-            inputData.append("inv()");
-        });
-        tran.setOnClickListener(view -> {
-            inputData.append("tran()");
-        });
-        adj.setOnClickListener(view -> {
-            inputData.append("adj()");
-        });
-        rang.setOnClickListener(view -> {
-            inputData.append("rang()");
-        });
-        diag.setOnClickListener(view -> {
-            inputData.append("diag()");
-        });
-        pow_btn.setOnClickListener(view -> {
-            inputData.append("^2");
-        });
-        seven.setOnClickListener(view -> {
-            inputData.append("7");
-        });
-        eight.setOnClickListener(view -> {
-            inputData.append("8");
-        });
-        nine.setOnClickListener(view -> {
-            inputData.append("9");
-        });
-        plus.setOnClickListener(view -> {
-            inputData.append("+");
-        });
-        four.setOnClickListener(view -> {
-            inputData.append("4");
-        });
-        five.setOnClickListener(view -> {
-            inputData.append("5");
-        });
-        six.setOnClickListener(view -> {
-            inputData.append("6");
-        });
-        minus.setOnClickListener(view -> {
-            inputData.append("-");
-        });
-        one.setOnClickListener(view -> {
-            inputData.append("1");
-        });
-        two.setOnClickListener(view -> {
-            inputData.append("2");
-        });
-        three.setOnClickListener(view -> {
-            inputData.append("3");
-        });
-        asterisk.setOnClickListener(view -> {
-            inputData.append("*");
-        });
-        solve.setOnClickListener( view -> {
-            if (isMatricesValid()){
-                outputData.setText("RESULTS");
-                String input = inputData.getText().toString();
-                //TODO: Clean the inputData
-                sanitizeInput(input);
-            } else {
-                Toast.makeText(getApplicationContext(), "Please fill the Matrices!!!!", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        solve = (Button) findViewById(R.id.solve);
+//        A = (Button) findViewById(R.id.A);
+//        B = (Button) findViewById(R.id.B);
+//        trian = (Button) findViewById(R.id.trian);
+//        det = (Button) findViewById(R.id.det);
+//        inv = (Button) findViewById(R.id.inv);
+//        tran = (Button) findViewById(R.id.tran);
+//        adj = (Button) findViewById(R.id.adj);
+//        rang = (Button) findViewById(R.id.rang);
+//        diag = (Button) findViewById(R.id.diag);
+//        pow_btn = (Button) findViewById(R.id.pow_btn);
+//        seven = (Button) findViewById(R.id.seven);
+//        eight = (Button) findViewById(R.id.eight);
+//        nine = (Button) findViewById(R.id.nine);
+//        four = (Button) findViewById(R.id.four);
+//        five = (Button) findViewById(R.id.five);
+//        six = (Button) findViewById(R.id.six);
+//        one = (Button) findViewById(R.id.one);
+//        two = (Button) findViewById(R.id.two);
+//        three = (Button) findViewById(R.id.three);
+//        plus = (Button) findViewById(R.id.plus);
+//        minus = (Button) findViewById(R.id.minus);
+//        asterisk = (Button) findViewById(R.id.asterisk);
+//
+//        inputData = (EditText) findViewById(R.id.inputData);
+//        outputData = (TextView) findViewById(R.id.outputData);
+//        matAList = new ArrayList<>();
+//        matAList.add((EditText) findViewById(R.id.A_0_0));
+//        matAList.add((EditText) findViewById(R.id.A_0_1));
+//        matAList.add((EditText) findViewById(R.id.A_0_2));
+//        matAList.add((EditText) findViewById(R.id.A_1_0));
+//        matAList.add((EditText) findViewById(R.id.A_1_1));
+//        matAList.add((EditText) findViewById(R.id.A_1_2));
+//        matAList.add((EditText) findViewById(R.id.A_2_0));
+//        matAList.add((EditText) findViewById(R.id.A_2_1));
+//        matAList.add((EditText) findViewById(R.id.A_2_2));
+//        matBList = new ArrayList<>();
+//        matBList.add((EditText) findViewById(R.id.B_0_0));
+//        matBList.add((EditText) findViewById(R.id.B_0_1));
+//        matBList.add((EditText) findViewById(R.id.B_0_2));
+//        matBList.add((EditText) findViewById(R.id.B_1_0));
+//        matBList.add((EditText) findViewById(R.id.B_1_1));
+//        matBList.add((EditText) findViewById(R.id.B_1_2));
+//        matBList.add((EditText) findViewById(R.id.B_2_0));
+//        matBList.add((EditText) findViewById(R.id.B_2_1));
+//        matBList.add((EditText) findViewById(R.id.B_2_2));
+//
+//        A.setOnClickListener(view -> {
+//            inputData.append("A");
+//        });
+//        B.setOnClickListener(view -> {
+//            inputData.append("B");
+//        });
+//        A.setOnClickListener(view -> {
+//            inputData.append("A");
+//        });
+//        trian.setOnClickListener(view -> {
+//            inputData.append("trian()");
+//        });
+//        det.setOnClickListener(view -> {
+//            inputData.append("det()");
+//        });
+//        inv.setOnClickListener(view -> {
+//            inputData.append("inv()");
+//        });
+//        tran.setOnClickListener(view -> {
+//            inputData.append("tran()");
+//        });
+//        adj.setOnClickListener(view -> {
+//            inputData.append("adj()");
+//        });
+//        rang.setOnClickListener(view -> {
+//            inputData.append("rang()");
+//        });
+//        diag.setOnClickListener(view -> {
+//            inputData.append("diag()");
+//        });
+//        pow_btn.setOnClickListener(view -> {
+//            inputData.append("^2");
+//        });
+//        seven.setOnClickListener(view -> {
+//            inputData.append("7");
+//        });
+//        eight.setOnClickListener(view -> {
+//            inputData.append("8");
+//        });
+//        nine.setOnClickListener(view -> {
+//            inputData.append("9");
+//        });
+//        plus.setOnClickListener(view -> {
+//            inputData.append("+");
+//        });
+//        four.setOnClickListener(view -> {
+//            inputData.append("4");
+//        });
+//        five.setOnClickListener(view -> {
+//            inputData.append("5");
+//        });
+//        six.setOnClickListener(view -> {
+//            inputData.append("6");
+//        });
+//        minus.setOnClickListener(view -> {
+//            inputData.append("-");
+//        });
+//        one.setOnClickListener(view -> {
+//            inputData.append("1");
+//        });
+//        two.setOnClickListener(view -> {
+//            inputData.append("2");
+//        });
+//        three.setOnClickListener(view -> {
+//            inputData.append("3");
+//        });
+//        asterisk.setOnClickListener(view -> {
+//            inputData.append("*");
+//        });
+//        solve.setOnClickListener( view -> {
+//            if (isMatricesValid()){
+//                outputData.setText("RESULTS");
+//                String input = inputData.getText().toString();
+//                //TODO: Clean the inputData
+//                sanitizeInput(input);
+//            } else {
+//                Toast.makeText(getApplicationContext(), "Please fill the Matrices!!!!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
     }
 
