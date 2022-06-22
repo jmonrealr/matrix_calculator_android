@@ -42,11 +42,9 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                CalculatorFragment tab1 = new CalculatorFragment();
-                return tab1;
+                return new CalculatorFragment();
             case 1:
-                GraphicFragment tab2 = new GraphicFragment();
-                return tab2;
+                return new GraphicFragment();
             default:
                 return null;
         }

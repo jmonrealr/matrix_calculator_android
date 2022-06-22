@@ -3,11 +3,471 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#999999"
+    android:orientation="vertical"
     tools:context=".CalculatorFragment">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Matrix Calculator"
+                android:textAlignment="center"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                android:background="#595959"
+                >
+            </TextView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="Calculator" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="4"
+                android:background="#999999"
+                android:layout_marginBottom="10dp">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:columnCount="3"
+                    android:orientation="horizontal"
+                    android:rowCount="4">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_columnSpan="3"
+                        android:layout_gravity="fill"
+                        android:layout_marginBottom="10dp"
+                        android:text="Matrix A"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        tools:ignore="RtlCompat">
+
+                    </TextView>
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/A_0_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/A_0_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/A_0_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/A_1_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/A_1_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/A_1_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/A_2_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/A_2_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/A_2_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+
+                </GridLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="4"
+                android:background="#999999"
+                android:layout_marginBottom="10dp">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:columnCount="3"
+                    android:orientation="horizontal"
+                    android:rowCount="4">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_columnSpan="3"
+                        android:layout_gravity="fill"
+                        android:layout_marginBottom="10dp"
+                        android:text="Matrix B"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        tools:ignore="RtlCompat">
+
+                    </TextView>
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/B_0_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/B_0_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/B_0_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/B_1_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/B_1_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/B_1_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/B_2_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/B_2_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:layout_columnWeight="1"
+                        android:id="@+id/B_2_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        android:inputType="number" />
+
+
+                </GridLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="9"
+                android:orientation="vertical"
+                >
+
+                <GridLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:columnCount="4"
+                    android:rowCount="9"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:id="@+id/outputData"
+                        android:layout_columnSpan="4"
+                        android:layout_columnWeight="4"
+                        android:layout_gravity="fill"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="#999999"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:text="RESULTS"
+                        tools:ignore="RtlCompat" />
+
+                    <EditText
+                        android:layout_columnWeight="4"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/inputData"
+                        android:layout_columnSpan="4"
+                        android:layout_gravity="fill"
+                        android:hint="det(A)"
+                        android:textAlignment="viewEnd"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="20dp"
+                        android:background="#999999"
+                        android:textColor="@color/black"
+                        tools:ignore="RtlCompat">
+                    </EditText>
+
+                    <Button
+                        android:id="@+id/solve"
+                        android:layout_columnSpan="4"
+                        android:layout_gravity="fill"
+                        android:text="Solve"
+                        />
+
+                    <Button
+                        android:id="@+id/A"
+                        android:layout_columnSpan="2"
+                        android:layout_gravity="fill"
+                        android:text="A"
+                        />
+
+                    <Button
+                        android:id="@+id/B"
+                        android:layout_columnSpan="2"
+                        android:layout_gravity="fill"
+                        android:text="B"
+                        />
+
+                    <Button
+                        android:id="@+id/trian"
+                        android:text="trian"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+                    <Button
+                        android:id="@+id/det"
+                        android:text="det"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+
+                    <Button
+                        android:id="@+id/inv"
+                        android:text="inv"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+
+                    <Button
+                        android:id="@+id/tran"
+                        android:text="tran"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+
+                    <Button
+                        android:id="@+id/adj"
+                        android:text="adj"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+
+                    <Button
+                        android:id="@+id/rang"
+                        android:text="rang"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+
+                    <Button
+                        android:id="@+id/diag"
+                        android:text="diag"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+                    <Button
+                        android:id="@+id/pow_btn"
+                        android:text="^2"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+
+
+                    <Button
+                        android:id="@+id/seven"
+                        android:text="7"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+
+                    <Button
+                        android:id="@+id/eight"
+                        android:text="8"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+                    <Button
+                        android:id="@+id/nine"
+                        android:text="9"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+                    <Button
+                        android:id="@+id/plus"
+                        android:text="+"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+
+                    <Button
+                        android:id="@+id/four"
+                        android:text="4"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+
+                    <Button
+                        android:id="@+id/five"
+                        android:text="5"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+                    <Button
+                        android:id="@+id/six"
+                        android:text="6"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+
+                    <Button
+                        android:id="@+id/minus"
+                        android:text="-"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+                    <Button
+                        android:id="@+id/one"
+                        android:text="1"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+
+                    <Button
+                        android:id="@+id/two"
+                        android:text="2"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+                    <Button
+                        android:id="@+id/three"
+                        android:text="3"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+                    <Button
+                        android:id="@+id/asterisk"
+                        android:text="*"
+                        android:layout_columnSpan="1"
+                        android:layout_gravity="fill"
+                        />
+                </GridLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="All rights Reserved© 2022.\nJuan Carlos Monreal Romero"
+                android:textAlignment="center"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:background="#595959"
+                >
+            </TextView>
+        </LinearLayout>
 </androidx.core.widget.NestedScrollView>
