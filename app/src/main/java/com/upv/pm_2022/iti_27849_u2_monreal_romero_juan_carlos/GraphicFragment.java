@@ -11,11 +11,22 @@ import androidx.annotation.Nullable;
 
 public class GraphicFragment extends Fragment {
 
+    public GraphicFragment(){
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_graphic, container, false);
+        View newView = inflater.inflate(R.layout.fragment_graphic, container, false);
+        return newView;
+    }
+
+    @Override
+    public void onDestroyView() {
+
+        super.onDestroyView();
     }
 }

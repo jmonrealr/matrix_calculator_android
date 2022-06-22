@@ -31,6 +31,10 @@ public class CalculatorFragment extends Fragment {
     private int[][] matA = new int[3][3];
     private int[][] matB = new int[3][3];
 
+
+    public CalculatorFragment() {
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -407,5 +411,11 @@ public class CalculatorFragment extends Fragment {
         }
         stringOut += "]";
         return stringOut;
+    }
+
+    @Override
+    public void onDestroyView() {
+
+        super.onDestroyView();
     }
 }
