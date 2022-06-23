@@ -257,7 +257,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="9"
+                android:layout_weight="11"
                 android:orientation="vertical"
                 >
 
@@ -266,7 +266,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:columnCount="4"
-                    android:rowCount="9"
+                    android:rowCount="10"
                     android:orientation="horizontal"
                     tools:ignore="UselessParent">
 
@@ -300,6 +300,13 @@
                         android:textColor="@color/black"
                         tools:ignore="RtlCompat">
                     </EditText>
+
+                    <Button
+                        android:id="@+id/fillMatrices"
+                        android:layout_columnSpan="4"
+                        android:layout_gravity="fill"
+                        android:text="Fill Matrices"
+                        />
 
                     <Button
                         android:id="@+id/solve"

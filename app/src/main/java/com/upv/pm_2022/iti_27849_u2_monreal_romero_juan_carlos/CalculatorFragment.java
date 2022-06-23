@@ -1,5 +1,6 @@
 package com.upv.pm_2022.iti_27849_u2_monreal_romero_juan_carlos;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +10,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,7 +25,7 @@ public class CalculatorFragment extends Fragment {
 
     private Button A, B, trian, det, inv, tran, adj, rang, diag, pow_btn,
             seven, eight, nine, four, five, six, one, two, three,
-            plus, minus, asterisk, solve;
+            plus, minus, asterisk, solve, fillMatrices;
     private EditText inputData;
     private TextView outputData;
     private EditText A_0_0, A_0_1, A_0_2, A_1_0, A_1_1, A_1_2, A_2_0, A_2_1, A_2_2;
@@ -35,6 +38,7 @@ public class CalculatorFragment extends Fragment {
     public CalculatorFragment() {
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -65,6 +69,7 @@ public class CalculatorFragment extends Fragment {
         plus = (Button) newView.findViewById(R.id.plus);
         minus = (Button) newView.findViewById(R.id.minus);
         asterisk = (Button) newView.findViewById(R.id.asterisk);
+        fillMatrices = newView.findViewById(R.id.fillMatrices);
 
         inputData = (EditText) newView.findViewById(R.id.inputData);
         outputData = (TextView) newView.findViewById(R.id.outputData);
@@ -166,6 +171,21 @@ public class CalculatorFragment extends Fragment {
                 sanitizeInput(input);
             } else {
                 Toast.makeText(view.getContext(), "Please fill the Matrices!!!!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        fillMatrices.setOnClickListener( view -> {
+
+            Random random = new Random();
+            Random random2 = new Random();
+
+            for (EditText editText : matAList) {
+                String r1 = String.valueOf(random.nextInt(100) + 1);
+                editText.setText(r1);
+            }
+            for (EditText element : matBList) {
+                String r2 = String.valueOf(random2.nextInt(100) + 1);
+                element.setText(r2);
             }
         });
 
