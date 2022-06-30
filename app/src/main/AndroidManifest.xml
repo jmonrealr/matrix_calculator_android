@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Iti27849u2_monreal_romero_juan_carlos">
         <activity
+            android:name=".InverseGraphic"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

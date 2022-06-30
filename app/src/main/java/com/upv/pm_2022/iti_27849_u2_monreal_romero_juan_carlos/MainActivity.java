@@ -33,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
         firstTab.setText("Calculator");
 //        firstTab.setIcon(R.drawable.ic_launcher);
 
-        TabLayout.Tab secondTab = tabLayout.newTab();
-        secondTab.setText("Graphic Inverse Matrix");
-//        secondTab.setIcon(R.drawable.ic_launcher);
+//        TabLayout.Tab secondTab = tabLayout.newTab();
+//        secondTab.setText("Graphic Inverse Matrix");
+////        secondTab.setIcon(R.drawable.ic_launcher);
 
 
         tabLayout.addTab(firstTab);
-        tabLayout.addTab(secondTab);
+//        tabLayout.addTab(secondTab);
 
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);

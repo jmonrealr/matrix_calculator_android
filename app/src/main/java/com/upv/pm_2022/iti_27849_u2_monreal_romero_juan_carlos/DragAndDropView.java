@@ -77,6 +77,10 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 		int x = getWidth();//OBTENER ANCHO
 		int y = getHeight();//OBTENER ALTO
 		Paint paint = new Paint();
+		paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(3f);
+		paint.setColor(Color.WHITE);
+		canvas.drawPaint(paint);
 		// mitad de ancho
 		int mitadAncho = canvas.getWidth() / 2;
 		// mitad de alto
@@ -85,13 +89,13 @@ public class DragAndDropView extends SurfaceView implements SurfaceHolder.Callba
 		//Paint p = new Paint();
 		paint.setAntiAlias(true);
 		//canvas.drawColor(Color.WHITE);
-		paint.setColor(Color.BLUE);
-		paint.setTextSize(35);
+		paint.setColor(Color.BLACK);
+		paint.setTextSize(35f);
 
 		int title_x  = (mitadAncho - 3 * (mitadAncho / 4));
 		int title_y =  (mitadAlto - 3 * (mitadAlto / 4));
 		canvas.drawText("Graficado de una matrix",title_x, title_y,paint);
-		paint.setColor(Color.BLACK);
+		paint.setColor(Color.WHITE);
 
 	}
 

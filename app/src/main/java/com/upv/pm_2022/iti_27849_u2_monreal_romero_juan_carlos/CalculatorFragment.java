@@ -1,5 +1,6 @@
 package com.upv.pm_2022.iti_27849_u2_monreal_romero_juan_carlos;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -34,6 +35,8 @@ public class CalculatorFragment extends Fragment {
     private int[][] matA = new int[3][3];
     private int[][] matB = new int[3][3];
     private double[][] temp = new double[3][3];
+    private boolean isInverseActive = false;
+    private Button drawInverse;
 
 
     public CalculatorFragment() {
@@ -48,6 +51,7 @@ public class CalculatorFragment extends Fragment {
 
         View newView = inflater.inflate(R.layout.fragment_calculator, container, false);
         solve = (Button) newView.findViewById(R.id.solve);
+        drawInverse = newView.findViewById(R.id.drawInvMatrix);
         A = (Button) newView.findViewById(R.id.A);
         B = (Button) newView.findViewById(R.id.B);
         trian = (Button) newView.findViewById(R.id.trian);
@@ -71,7 +75,7 @@ public class CalculatorFragment extends Fragment {
         minus = (Button) newView.findViewById(R.id.minus);
         asterisk = (Button) newView.findViewById(R.id.asterisk);
         fillMatrices = newView.findViewById(R.id.fillMatrices);
-
+        
         inputData = (EditText) newView.findViewById(R.id.inputData);
         outputData = (TextView) newView.findViewById(R.id.outputData);
         matAList = new ArrayList<>();
@@ -165,6 +169,7 @@ public class CalculatorFragment extends Fragment {
             inputData.append("*");
         });
         solve.setOnClickListener( view -> {
+            isInverseActive = false;
             if (isMatricesValid()){
                 outputData.setText("RESULTS");
                 String input = inputData.getText().toString();
@@ -189,6 +194,16 @@ public class CalculatorFragment extends Fragment {
                 element.setText(r2);
             }
             inputData.requestFocus();
+        });
+        
+        drawInverse.setOnClickListener( view -> {
+            if (isInverseActive ) {
+                Intent intent = new Intent(getContext(),InverseGraphic.class);
+                intent.putExtra("list", temp);
+                startActivity(intent);
+            }else {
+                Toast.makeText(getContext(), "First calculate the inverse on any matrix!", Toast.LENGTH_SHORT).show();
+            }
         });
 
         return newView;
@@ -303,11 +318,13 @@ public class CalculatorFragment extends Fragment {
                 break;
            case "inv":
                 if (inputData.contains("A")){
+                    isInverseActive = true;
                     fillTempMatrix(matA);
                     outputData.setText("Result: " + display(operations.inverse(temp)));
                 }
                 if (inputData.contains("B")){
                     fillTempMatrix(matB);
+                    isInverseActive = true;
                     outputData.setText("Result: " + display(operations.inverse(temp)));
                 }
                 break;
