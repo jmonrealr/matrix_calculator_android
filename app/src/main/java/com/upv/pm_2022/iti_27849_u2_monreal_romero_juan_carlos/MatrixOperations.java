@@ -200,6 +200,35 @@ public class MatrixOperations {
     }
 
     /**
+     * The inverse of a matrix A is a matrix that, when multiplied by the original matrix,
+     * the result is an identity matrix. The notation used to refer to an inverse matrix is a ^-1 ,
+     * or what is the same, raising the matrix to -1.
+     * @param matrix Matrix
+     * @return
+     */
+    private double[][] inverse(double[][] matrix) {
+		double[][] inverse = new double[matrix.length][matrix.length];
+
+		// minors and cofactors
+		for (int i = 0; i < matrix.length; i++)
+			for (int j = 0; j < matrix[i].length; j++)
+				inverse[i][j] = Math.pow(-1, i + j)
+						* determinant(minor(matrix, i, j));
+
+		// adjugate and determinant
+		double det = 1.0 / determinant(matrix);
+		for (int i = 0; i < inverse.length; i++) {
+			for (int j = 0; j <= i; j++) {
+				double temp = inverse[i][j];
+				inverse[i][j] = inverse[j][i] * det;
+				inverse[j][i] = temp * det;
+			}
+		}
+
+		return inverse;
+	}
+
+    /**
      * The addition of matrices can be carried out as long as the dimensions of the matrices
      * are the same, that is, both matrices must have the same number of rows and columns.
      * To add two matrices, we add the numbers of each matrix that are in the same position,
@@ -261,6 +290,49 @@ public class MatrixOperations {
         }
         return result;
     }
+
+    /**
+     * The determinant of a matrix A is denoted det(A), det A, or |A|.
+     * @param matrix
+     * @return
+     */
+    private double determinant(double[][] matrix) {
+		if (matrix.length != matrix[0].length)
+			throw new IllegalStateException("invalid dimensions");
+
+		if (matrix.length == 2)
+			return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+
+		double det = 0;
+		for (int i = 0; i < matrix[0].length; i++)
+			det += Math.pow(-1, i) * matrix[0][i]
+					* determinant(minor(matrix, 0, i));
+		return det;
+	}
+
+    /**
+     * A minor of a matrix A is the determinant of some smaller square matrix,
+     * cut down from A by removing one or more of its rows and columns.
+     * Minors obtained by removing just one row and one column from square matrices (first minors)
+     * are required for calculating matrix cofactors, which in turn are useful for computing both
+     * the determinant and inverse of square matrices.
+     * @param matrix
+     * @param row
+     * @param column
+     * @return
+     */
+    private double[][] minor(double[][] matrix, int row, int column) {
+		double[][] minor = new double[matrix.length - 1][matrix.length - 1];
+
+		for (int i = 0; i < matrix.length; i++)
+			for (int j = 0; i != row && j < matrix[i].length; j++)
+				if (j != column)
+					minor[i < row ? i : i - 1][j < column ? j : j - 1] = matrix[i][j];
+		return minor;
+	}
+
+
+
 
     /**
      * @deprecated not implemented yet

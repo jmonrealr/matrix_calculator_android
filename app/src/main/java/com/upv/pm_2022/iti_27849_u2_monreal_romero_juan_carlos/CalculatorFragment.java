@@ -187,6 +187,7 @@ public class CalculatorFragment extends Fragment {
                 String r2 = String.valueOf(random2.nextInt(100) + 1);
                 element.setText(r2);
             }
+            inputData.requestFocus();
         });
 
         return newView;
@@ -254,8 +255,8 @@ public class CalculatorFragment extends Fragment {
                             Toast.makeText(this.getContext(), "Please ENTER VALID DATA", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    System.out.println(matcher.group(1).toString());
-    //                System.out.println(matcher.group(2).toString());
+//                    System.out.println(matcher.group(1).toString());
+//                    System.out.println(matcher.group(2).toString());
                 }
             }
         }else {

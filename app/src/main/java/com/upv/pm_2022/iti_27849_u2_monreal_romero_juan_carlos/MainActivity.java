@@ -31,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout.Tab firstTab = tabLayout.newTab();
         firstTab.setText("Calculator");
-        firstTab.setIcon(R.drawable.ic_launcher);
+//        firstTab.setIcon(R.drawable.ic_launcher);
 
         TabLayout.Tab secondTab = tabLayout.newTab();
         secondTab.setText("Graphic Inverse Matrix");
-        secondTab.setIcon(R.drawable.ic_launcher);
+//        secondTab.setIcon(R.drawable.ic_launcher);
 
 
         tabLayout.addTab(firstTab);
