@@ -4,13 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class GraphicFragment extends Fragment {
 
+    private ArrayList<double[][]> arrayList;
     public GraphicFragment(){
 
     }
@@ -21,7 +25,13 @@ public class GraphicFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View newView = inflater.inflate(R.layout.fragment_graphic, container, false);
-        return newView;
+        if (MatrixOperations.listOfInverse == null) {
+            Toast.makeText(getContext(), "Please first calculate the inverse of any matrix", Toast.LENGTH_SHORT).show();
+            return null;
+        }else {
+            arrayList = MatrixOperations.listOfInverse;
+            return new DragAndDropView(newView.getContext(), arrayList);
+        }
     }
 
     @Override

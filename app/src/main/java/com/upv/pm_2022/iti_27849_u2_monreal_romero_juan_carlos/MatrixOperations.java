@@ -1,5 +1,7 @@
 package com.upv.pm_2022.iti_27849_u2_monreal_romero_juan_carlos;
 
+import java.util.ArrayList;
+
 /**
  * @author jmonrealr
  * Some functions and description of them has been taken by the source:
@@ -8,6 +10,7 @@ package com.upv.pm_2022.iti_27849_u2_monreal_romero_juan_carlos;
 public class MatrixOperations {
 
     double[][] Mat;
+    static ArrayList<double[][]> listOfInverse = null;
 
     public MatrixOperations() { Mat = new double[3][3]; }
 
@@ -21,7 +24,7 @@ public class MatrixOperations {
      * @param n Size of the matrix
      * @return
      */
-    public int determinant(int[][] mat, int n) {
+    public int determinantInt(int[][] mat, int n) {
         int result = 0;
 
         int [][]temp = new int[3][3];
@@ -29,7 +32,7 @@ public class MatrixOperations {
 
         for (int i = 0; i < 3; i++) {
             getCoFactor(mat, temp, 0, i, n);
-            result += sign * mat[0][i] * determinant(temp, n-1);
+            result += sign * mat[0][i] * determinantInt(temp, n-1);
             sign = -sign;
         }
         return result;
@@ -171,7 +174,7 @@ public class MatrixOperations {
 
                 // Interchanging rows and columns to get the
                 // transpose of the cofactor matrix
-                adj[j][i] = (sign)*(determinant(temp, 3-1));
+                adj[j][i] = (sign)*(determinantInt(temp, 3-1));
             }
         }
     }
@@ -184,7 +187,7 @@ public class MatrixOperations {
      * @return
      */
     public boolean inverse(int[][] mat) {
-        int det = determinant(mat, 3);
+        int det = determinantInt(mat, 3);
         if ( det != 0){
             int [][]adj = new int[3][3];
             adjoint(mat, adj);
@@ -192,7 +195,7 @@ public class MatrixOperations {
                 for (int j = 0; j < 3; j++) {
                     Mat[i][j] = adj[i][j]/(double) det;
                 }
-                
+
             }
         } else
             return false;
@@ -206,17 +209,18 @@ public class MatrixOperations {
      * @param matrix Matrix
      * @return
      */
-    private double[][] inverse(double[][] matrix) {
+    public double[][] inverse(double[][] matrix) {
+        listOfInverse = new ArrayList<>();
 		double[][] inverse = new double[matrix.length][matrix.length];
-
+        listOfInverse.add(inverse);
 		// minors and cofactors
 		for (int i = 0; i < matrix.length; i++)
 			for (int j = 0; j < matrix[i].length; j++)
 				inverse[i][j] = Math.pow(-1, i + j)
-						* determinant(minor(matrix, i, j));
-
+						* newDeterminant(minor(matrix, i, j));
+       listOfInverse.add(inverse);
 		// adjugate and determinant
-		double det = 1.0 / determinant(matrix);
+		double det = 1.0 / newDeterminant(matrix);
 		for (int i = 0; i < inverse.length; i++) {
 			for (int j = 0; j <= i; j++) {
 				double temp = inverse[i][j];
@@ -224,6 +228,7 @@ public class MatrixOperations {
 				inverse[j][i] = temp * det;
 			}
 		}
+        listOfInverse.add(inverse);
 
 		return inverse;
 	}
@@ -296,7 +301,7 @@ public class MatrixOperations {
      * @param matrix
      * @return
      */
-    private double determinant(double[][] matrix) {
+    public double newDeterminant(double[][] matrix) {
 		if (matrix.length != matrix[0].length)
 			throw new IllegalStateException("invalid dimensions");
 
@@ -306,7 +311,7 @@ public class MatrixOperations {
 		double det = 0;
 		for (int i = 0; i < matrix[0].length; i++)
 			det += Math.pow(-1, i) * matrix[0][i]
-					* determinant(minor(matrix, 0, i));
+					* newDeterminant(minor(matrix, 0, i));
 		return det;
 	}
 
@@ -321,7 +326,7 @@ public class MatrixOperations {
      * @param column
      * @return
      */
-    private double[][] minor(double[][] matrix, int row, int column) {
+    public double[][] minor(double[][] matrix, int row, int column) {
 		double[][] minor = new double[matrix.length - 1][matrix.length - 1];
 
 		for (int i = 0; i < matrix.length; i++)

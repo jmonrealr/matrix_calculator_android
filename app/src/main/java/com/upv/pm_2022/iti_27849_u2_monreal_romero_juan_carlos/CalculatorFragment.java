@@ -33,6 +33,7 @@ public class CalculatorFragment extends Fragment {
     private ArrayList<EditText> matAList, matBList;
     private int[][] matA = new int[3][3];
     private int[][] matB = new int[3][3];
+    private double[][] temp = new double[3][3];
 
 
     public CalculatorFragment() {
@@ -302,18 +303,12 @@ public class CalculatorFragment extends Fragment {
                 break;
            case "inv":
                 if (inputData.contains("A")){
-                    if (operations.inverse(matA)){
-                     outputData.setText("Result: " + display(operations.Mat));
-                    }else {
-                        outputData.setText("ERROR!!! Invalid input");
-                    }
+                    fillTempMatrix(matA);
+                    outputData.setText("Result: " + display(operations.inverse(temp)));
                 }
                 if (inputData.contains("B")){
-                    if (operations.inverse(matB)){
-                     outputData.setText("Result: " + display(operations.Mat));
-                    }else {
-                        outputData.setText("ERROR!!! Invalid input");
-                    }
+                    fillTempMatrix(matB);
+                    outputData.setText("Result: " + display(operations.inverse(temp)));
                 }
                 break;
            case "tran":
@@ -434,6 +429,13 @@ public class CalculatorFragment extends Fragment {
         return stringOut;
     }
 
+    private void fillTempMatrix(int[][] temp){
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                this.temp[i][j] = temp[i][j];
+            }
+        }
+    }
     @Override
     public void onDestroyView() {
 

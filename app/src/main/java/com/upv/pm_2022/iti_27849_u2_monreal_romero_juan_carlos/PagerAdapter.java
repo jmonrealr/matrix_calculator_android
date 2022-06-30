@@ -28,7 +28,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
      * @param numTabs determines if only current fragments are in a resumed state
      */
     public PagerAdapter(@NonNull FragmentManager fm, int numTabs) {
-        super(fm, FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        super(fm, FragmentStatePagerAdapter.BEHAVIOR_SET_USER_VISIBLE_HINT);
         this.numTabs = numTabs;
     }
 
