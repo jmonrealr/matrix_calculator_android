@@ -26,9 +26,10 @@ public class DragAndDropThread extends Thread {
 			canvas = null;
 			try {
 				canvas = sh.lockCanvas(null);
-				synchronized(sh) {
-					view.onDraw(canvas);
-				}
+				if (canvas != null)
+					synchronized(sh) {
+						view.onDraw(canvas);
+					}
 			} finally {
 				if(canvas != null)
 					sh.unlockCanvasAndPost(canvas);		// return to a stable state
