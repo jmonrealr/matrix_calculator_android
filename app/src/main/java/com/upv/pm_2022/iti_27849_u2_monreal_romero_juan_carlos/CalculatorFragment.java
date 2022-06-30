@@ -425,7 +425,10 @@ public class CalculatorFragment extends Fragment {
         for (int i = 0; i < 3; i++) {
             stringOut += "[";
             for (int j = 0; j < 3; j++) {
-                stringOut += String.format("%.2f, ", mat[i][j]);
+                if (j == 2)
+					stringOut += String.format("%.2f ", mat[i][j]);
+				else
+                	stringOut += String.format("%.2f, ", mat[i][j]);
             }
             stringOut += "]\n";
         }
@@ -438,7 +441,10 @@ public class CalculatorFragment extends Fragment {
         for (int i = 0; i < 3; i++) {
             stringOut += "[";
             for (int j = 0; j < 3; j++) {
-                stringOut += mat[i][j] + ", ";
+                if (j == 2)
+					stringOut += String.format("%.2f ", mat[i][j]);
+				else
+                	stringOut += String.format("%.2f, ", mat[i][j]);
             }
             stringOut += "]\n";
         }

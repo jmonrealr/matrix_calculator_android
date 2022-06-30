@@ -11,6 +11,7 @@ public class MatrixOperations {
 
     double[][] Mat;
     static ArrayList<double[][]> listOfInverse = null;
+    static ArrayList<String> steps;
 
     public MatrixOperations() { Mat = new double[3][3]; }
 
@@ -211,21 +212,27 @@ public class MatrixOperations {
      */
     public double[][] inverse(double[][] matrix) {
         listOfInverse = new ArrayList<>();
+        steps = new ArrayList<>();
 		double[][] inverse = new double[matrix.length][matrix.length];
         listOfInverse.add(inverse);
 		// minors and cofactors
 		for (int i = 0; i < matrix.length; i++)
-			for (int j = 0; j < matrix[i].length; j++)
-				inverse[i][j] = Math.pow(-1, i + j)
-						* newDeterminant(minor(matrix, i, j));
+			for (int j = 0; j < matrix[i].length; j++) {
+                steps.add(String.valueOf(Math.pow(-1, i + j) * newDeterminant(minor(matrix, i, j))));
+                inverse[i][j] = Math.pow(-1, i + j)
+                        * newDeterminant(minor(matrix, i, j));
+            }
        listOfInverse.add(inverse);
 		// adjugate and determinant
 		double det = 1.0 / newDeterminant(matrix);
 		for (int i = 0; i < inverse.length; i++) {
 			for (int j = 0; j <= i; j++) {
 				double temp = inverse[i][j];
+                steps.add(String.valueOf(inverse[j][i] * det));
 				inverse[i][j] = inverse[j][i] * det;
+                steps.add(String.valueOf(temp*det));
 				inverse[j][i] = temp * det;
+
 			}
 		}
         listOfInverse.add(inverse);

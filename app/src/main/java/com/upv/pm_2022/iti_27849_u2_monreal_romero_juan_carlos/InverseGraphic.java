@@ -20,10 +20,11 @@ public class InverseGraphic extends AppCompatActivity {
         setContentView(R.layout.activity_inverse_graphic);
         linearLayout = findViewById(R.id.surface);
         list = MatrixOperations.listOfInverse;
-        System.out.println(list.toString());
+        System.out.println("list size " + list.size());
+        ArrayList<String> steps = MatrixOperations.steps;
         Button button = new Button(this);
         button.setText("Return");
-        DragAndDropView dragAndDropView = new DragAndDropView(this, list);
+        DragAndDropView dragAndDropView = new DragAndDropView(this, list, steps);
         button.setOnClickListener( view -> {
             dragAndDropView.destroyDrawingCache();
             startActivity(new Intent(this, MainActivity.class));

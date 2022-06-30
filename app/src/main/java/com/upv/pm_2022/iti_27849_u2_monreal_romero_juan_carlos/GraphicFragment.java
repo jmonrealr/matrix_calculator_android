@@ -30,7 +30,8 @@ public class GraphicFragment extends Fragment {
             return null;
         }else {
             arrayList = MatrixOperations.listOfInverse;
-            return new DragAndDropView(newView.getContext(), arrayList);
+            ArrayList<String> steps = MatrixOperations.steps;
+            return new DragAndDropView(newView.getContext(), arrayList, steps);
         }
     }
 
